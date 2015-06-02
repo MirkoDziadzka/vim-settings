@@ -7,10 +7,20 @@ execute pathogen#infect()
 "
 syntax on
 filetype plugin indent on
-"
-" enable save last position when opening a file
-"
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" Highlight search results
+set hlsearch
+
+" Makes search act like search in modern browsers
+set incsearch
+
+" Show matching brackets when text indicator is over them
+set showmatch
+
+" save and store the position in the file in ~/.vim/view
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+
 "
 " configure plugins
 "
